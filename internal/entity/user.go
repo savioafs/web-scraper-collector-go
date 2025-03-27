@@ -1,25 +1,24 @@
 package entity
 
 import (
-	"errors"
 	"github.com/google/uuid"
+	"github.com/savioafs/web-scraper-collector-go/internal/common"
+	"time"
 )
 
 type User struct {
-	ID    string `json:"id"`
-	Name  string `json:"name"`
-	Email string `json:"email"`
+	ID        string    `json:"id"`
+	Name      string    `json:"name"`
+	Email     string    `json:"email"`
+	CreatedAt time.Time `json:"created_at"`
 }
-
-var (
-	ErrEmailIsRequired = errors.New("email is required")
-)
 
 func NewUser(name, email string) (*User, error) {
 	u := &User{
-		ID:    uuid.New().String(),
-		Name:  name,
-		Email: email,
+		ID:        uuid.New().String(),
+		Name:      name,
+		Email:     email,
+		CreatedAt: time.Now(),
 	}
 
 	if err := u.Validate(); err != nil {
@@ -31,11 +30,11 @@ func NewUser(name, email string) (*User, error) {
 
 func (u *User) Validate() error {
 	if u.Name == "" {
-		return ErrNameIsRequired
+		return common.ErrNameIsRequired
 	}
 
 	if u.Email == "" {
-		return ErrEmailIsRequired
+		return common.ErrEmailIsRequired
 	}
 
 	return nil

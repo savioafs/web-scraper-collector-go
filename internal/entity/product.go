@@ -6,11 +6,6 @@ import (
 	"time"
 )
 
-type WatchList struct {
-	ProductID string    `json:"book_id"`
-	ClientID  time.Time `json:"client_id"`
-}
-
 type Product struct {
 	ID          string    `json:"id"`
 	Name        string    `json:"name"`

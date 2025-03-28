@@ -1,7 +1,8 @@
-package entity
+package tests
 
 import (
 	"github.com/savioafs/web-scraper-collector-go/internal/common"
+	"github.com/savioafs/web-scraper-collector-go/internal/entity"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -44,7 +45,7 @@ func TestSaveProductPriceHistory(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			as := assert.New(t)
 
-			err := SaveProductPriceHistory(tt.productHistory.productID, tt.productHistory.newPrice)
+			err := entity.SaveProductPriceHistory(tt.productHistory.productID, tt.productHistory.newPrice)
 			if err != nil {
 				as.Equal(err, tt.expectErr)
 				return

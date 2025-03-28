@@ -1,7 +1,8 @@
-package entity
+package tests
 
 import (
 	"github.com/savioafs/web-scraper-collector-go/internal/common"
+	"github.com/savioafs/web-scraper-collector-go/internal/entity"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -43,7 +44,7 @@ func TestNewWatchList(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			as := assert.New(t)
 
-			watchList, err := NewWatchList(tt.watchList.productID, tt.watchList.userID)
+			watchList, err := entity.NewWatchList(tt.watchList.productID, tt.watchList.userID)
 			if err != nil {
 				as.Equal(err, tt.expectErr)
 				return

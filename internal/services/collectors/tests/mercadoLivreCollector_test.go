@@ -1,7 +1,8 @@
-package collectors
+package tests
 
 import (
 	"errors"
+	"github.com/savioafs/web-scraper-collector-go/internal/services/collectors"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -41,7 +42,7 @@ func TestRun(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			as := assert.New(t)
 
-			name, price, err := Run(tt.link)
+			name, price, err := collectors.Run(tt.link)
 			if err != nil {
 				as.Equal(err, tt.expectErr)
 				return

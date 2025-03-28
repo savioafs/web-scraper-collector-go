@@ -1,7 +1,8 @@
-package entity
+package tests
 
 import (
 	"github.com/savioafs/web-scraper-collector-go/internal/common"
+	"github.com/savioafs/web-scraper-collector-go/internal/entity"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/crypto/bcrypt"
 	"testing"
@@ -49,7 +50,7 @@ func TestNewUser(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			as := assert.New(t)
 
-			user, err := NewUser(tt.user.name, tt.user.email, tt.user.password)
+			user, err := entity.NewUser(tt.user.name, tt.user.email, tt.user.password)
 			if err != nil {
 				as.Equal(err, tt.expectErr)
 				return

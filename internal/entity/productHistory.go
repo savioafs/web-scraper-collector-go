@@ -1,6 +1,7 @@
 package entity
 
 import (
+	"github.com/google/uuid"
 	"github.com/savioafs/web-scraper-collector-go/internal/common"
 	"time"
 )
@@ -15,6 +16,7 @@ type ProductHistory struct {
 func SaveProductPriceHistory(productID string, newPrice float64) error {
 
 	p := &ProductHistory{
+		ID:        uuid.New().String(),
 		ProductID: productID,
 		Price:     newPrice,
 		Date:      time.Now(),

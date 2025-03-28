@@ -1,6 +1,7 @@
 package entity
 
 import (
+	"fmt"
 	"github.com/google/uuid"
 	"github.com/savioafs/web-scraper-collector-go/internal/common"
 	"time"
@@ -32,6 +33,8 @@ func NewProduct(name string, price float64, url string) (*Product, error) {
 		Url:         url,
 		ExtractDate: time.Now(),
 	}
+
+	fmt.Println(p.Name)
 
 	if err := p.Validate(); err != nil {
 		return nil, err

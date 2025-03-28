@@ -59,7 +59,6 @@ func TestNewUser(t *testing.T) {
 			as.Equal(user.Name, tt.user.name)
 			as.NotEqual(user.Password, tt.user.password)
 
-			// verify hash password
 			err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(tt.user.password))
 			as.NoError(err)
 

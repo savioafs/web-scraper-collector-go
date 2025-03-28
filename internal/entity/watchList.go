@@ -1,20 +1,23 @@
 package entity
 
 import (
+	"github.com/google/uuid"
 	"github.com/savioafs/web-scraper-collector-go/internal/common"
 	"time"
 )
 
 type WatchList struct {
+	ID        string    `json:"id"`
 	ProductID string    `json:"book_id"`
 	UserID    string    `json:"user_id"`
 	Date      time.Time `json:"date"`
 }
 
-func NewWatchList(productID, useID string) (*WatchList, error) {
+func NewWatchList(productID, userID string) (*WatchList, error) {
 	w := &WatchList{
+		ID:        uuid.New().String(),
 		ProductID: productID,
-		UserID:    useID,
+		UserID:    userID,
 		Date:      time.Now(),
 	}
 
